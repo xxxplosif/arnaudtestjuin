@@ -1,2 +1,5 @@
 /nbproject/*
 .htaccess
+
+# image folder's too big
+/images/*

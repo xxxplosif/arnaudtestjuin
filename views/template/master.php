@@ -9,7 +9,21 @@
 </head>
 <body>
     
-    <h1><?php echo TITLE ?></h1>
+    <h1>
+        <?php 
+        
+        if(isset($_SESSION['user'])) {
+            
+            echo TITLE.' - Espace client';
+            
+        }else{
+            
+            echo TITLE;
+            
+        }
+        
+        ?>
+    </h1>
     
     <header>
         
@@ -19,7 +33,18 @@
                 <li><a href="./">Accueil</a> |</li>
                 <li><a id="dropdowntrigger" onclick="toggledropdown()">Catégories <small>&#x25BC;</small></a> |</li> <?php // &#x25B2; for normal triangle ?>
                 <li><a href="./?page=contact">Nous contacter</a> |</li>
-                <li><a href="./?page=userconnect">Espace client</a></li>
+                <li><a href="./?page=user">Espace client</a></li>
+                
+                <?php 
+                
+                if(isset($_SESSION['user'])){
+                    
+                    echo "| <a href=\"./?page=deconnect\">Se déconnecter</a>";
+                    
+                }
+                
+                ?>
+                
             </ul>
             
                 <?php 
@@ -47,8 +72,6 @@
             <hr />
             
         </nav>
-        
-        <p>Message de bienvenue</p>
         
     </header>
     
