@@ -20,5 +20,11 @@
         <a href="./?page=userconnect">Se connecter à l'espace client</a>
     </header>
     
+    <section>
+        
+        <?php echo $content; ?>
+        
+    </section>
+    
 </body>
 </html>

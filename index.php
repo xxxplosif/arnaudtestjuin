@@ -1,9 +1,23 @@
 <?php
 
-// front controller
+//-- front controller --//
 
-require 'config.php';
+// core functions
+
+require './core/connect.php';
+
+require './core/secure.php';
+
+require './core/page.php';
+
+// processing
+
+require './config.php';
 
 require './models/master.php';
 
-require './views/template/template.php';
+require "./controllers/$page.php";
+
+// let's the show begin!
+
+require "views/$page.php";
