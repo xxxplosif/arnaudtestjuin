@@ -39,4 +39,4 @@ $mini_qualite = 70;
 
 // formats acceptés en minuscule dans un tableau, séparé par des ','
 
-$formats_acceptés = array('jpg','jpeg','png');
+$formats_acceptes = array('jpg','jpeg','png');

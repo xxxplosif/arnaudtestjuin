@@ -2,7 +2,7 @@
 
 ob_start();
 
-if(!isset($_SESSION['user'])):
+if(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
 
 ?>
 
