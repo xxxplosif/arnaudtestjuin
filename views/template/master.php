@@ -9,7 +9,21 @@
 </head>
 <body>
     
-    <h1><?php echo TITLE ?></h1>
+    <h1>
+        <?php 
+        
+        if(isset($_SESSION['user'])) {
+            
+            echo TITLE.' - Espace client';
+            
+        }else{
+            
+            echo TITLE;
+            
+        }
+        
+        ?>
+    </h1>
     
     <header>
         

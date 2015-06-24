@@ -10,4 +10,10 @@ if(isset($_POST['user']) && isset($_POST['password'])){
 
     $_SESSION['user'] = connectUser($user, $password);
     
+    if($_SESSION['user'] == false){
+        
+        $error_form_connection = 'Identifiants invalides !';
+        
+    }
+    
 }
