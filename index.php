@@ -12,6 +12,12 @@ require './core/secure.php';
 
 require './core/page.php';
 
+require './core/upload_originales.php';
+
+require './core/chaine_hasard.php';
+
+require './core/creation_img.php';
+
 // processing
 
 require './config.php';

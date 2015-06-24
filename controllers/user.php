@@ -17,3 +17,9 @@ if(isset($_POST['user']) && isset($_POST['password'])){
     }
     
 }
+
+if(isset($_FILES['up_file']) && isset($_POST['up_file_title'])){
+    
+    
+    
+}

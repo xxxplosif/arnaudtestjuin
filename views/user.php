@@ -23,9 +23,19 @@ echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en t
 
 ?>
 
-<form action="" method="POST">
+<p>Charger un ficher</p>
+
+<form action="" method="POST" enctype="multipart/form-data">
     
+    <label for="up_file_title">Titre du fichier</label>
+    <input type="text" id="up_file_title" name="up_file_title" required/>
     
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+    
+    <label for="up_file">Fichier</label>
+    <input type="file" id="up_file" name="up_file" required/>
+    
+    <input type="submit" value="Envoyer le fichier" />  
     
 </form>
 
