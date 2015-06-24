@@ -10,6 +10,6 @@ if(isset($_GET['page'])){
     
 }else{
     
-    $page="homepage";
+    $page="accueil";
     
 }
