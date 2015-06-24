@@ -62,6 +62,8 @@ if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
                         $ladesc,
                         $_SESSION['user']['id']);
             
+            $msg_image_uploaded = 'L\'image a bien été envoyée !';
+            
         }else{
             $error_upload_image = 'Erreur lors de l\'envoi de fichier';
         }

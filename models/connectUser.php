@@ -4,7 +4,7 @@ function connectUser($user,$password){
     
     global $connect; if(!isset($connect)) { $connect = connect(DB_SERVER, DB_USER, DB_MDP, DB_NAME); }
     
-    $q = "SELECT u.*, d.lenom AS ledroit
+    $q = "SELECT u.*, d.lenom AS ledroit, d.laperm AS laperm
           FROM utilisateur u
           INNER JOIN droit d ON u.droit_id = d.id
           WHERE u.lelogin = '$user' AND u.lepass = '$password';";

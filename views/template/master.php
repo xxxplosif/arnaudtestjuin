@@ -12,7 +12,7 @@
     <h1>
         <?php 
         
-        if(isset($_SESSION['user'])) {
+        if($page == 'user') {
             
             echo TITLE.' - Espace client';
             
@@ -37,9 +37,21 @@
                 
                 <?php 
                 
+                if(isset($_SESSION['user']) && $_SESSION['user']['laperm'] == 0){
+                    
+                    echo " | <li><a href=\"./?page=administration\">Administration</a></li>";
+                    
+                }
+                
+                if(isset($_SESSION['user']) && $_SESSION['user']['laperm'] == 1){
+                    
+                    echo " | <li><a href=\"./?page=moderation\">Modération</a></li>";
+                    
+                }
+                
                 if(isset($_SESSION['user'])){
                     
-                    echo "| <a href=\"./?page=deconnect\">Se déconnecter</a>";
+                    echo " | <li><a href=\"./?page=deconnect\">Se déconnecter</a></li>";
                     
                 }
                 

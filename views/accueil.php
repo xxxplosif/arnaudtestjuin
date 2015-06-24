@@ -20,12 +20,27 @@ else:
 
 endif;
 
-?>
-affichage des 20 dernières photos de tous les utilisateurs en miniature avec un lien target blank sur chaque
+for($i=0;$i<count($liste_photos);$i++){
+    
+    ?>
+    
+    <a href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" target="_blank">
+    
+    <div class="mini">
+    
+        <h4><?php echo $liste_photos[$i]['letitre']; ?></h4>
+       
+        <img  src="./images/miniatures/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" />
+    
+        <p><?php echo $liste_photos[$i]['ladesc']; ?></p>
+        
+        <pre>Par : <?php echo $liste_photos[$i]['lelogin']; ?></pre>
 
-
-
-<?php
+    </div></a>
+    
+    <?php
+    
+}
 
 $content = ob_get_clean();
 
