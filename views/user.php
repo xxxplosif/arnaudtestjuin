@@ -2,7 +2,7 @@
 
 ob_start();
 
-if(!isset($_SESSION['user'])):
+if(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
 
 ?>
 
@@ -23,9 +23,24 @@ echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en t
 
 ?>
 
-<form action="" method="POST">
+<h3>Charger un ficher</h3>
+
+<form action="" method="POST" enctype="multipart/form-data">
     
+    <label for="letitre">Titre du fichier</label>
+    <input type="text" id="letitre" name="letitre" required/><br /><br />
     
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+    
+    <label for="lefichier">Fichier</label>
+    <input type="file" id="lefichier" name="lefichier" required/><br/><br />
+    
+    <label for="ladesc">Description</label><br/>
+    <textarea id="ladesc" name="ladesc"></textarea><br/><br />
+    
+    <input type="submit" value="Envoyer le fichier" />  
+    
+    <?php if(isset($error_upload_image)) echo '<span style="color:red;">'.$error_upload_image.'</span>'; ?>
     
 </form>
 
