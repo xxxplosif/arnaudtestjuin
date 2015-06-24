@@ -23,7 +23,7 @@ echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en t
 
 ?>
 
-<h3>Charger un ficher</h3>
+<h3>Charger une nouvelle image</h3>
 
 <form action="" method="POST" enctype="multipart/form-data">
     
@@ -41,6 +41,8 @@ echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en t
     <input type="submit" value="Envoyer le fichier" />  
     
     <?php if(isset($error_upload_image)) echo '<span style="color:red;">'.$error_upload_image.'</span>'; ?>
+    
+    <?php if(isset($msg_image_uploaded)) echo '<span style="color:darkblue;">'.$msg_image_uploaded.'</span>'; ?>
     
 </form>
 

@@ -9,3 +9,12 @@ a{
     text-decoration: underline;
     cursor: pointer;
 }
+.mini{
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    border: 1px dotted tomato;
+}
+.mini h4{
+    text-align: center;
+}
