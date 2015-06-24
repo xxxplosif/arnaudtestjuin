@@ -22,20 +22,24 @@ endif;
 
 for($i=0;$i<count($liste_photos);$i++){
     
-    echo "<a href=\"./images/affichees/{$liste_photos[$i]['lenom']}.jpg\" target=\"_blank\">";
+    ?>
     
-    echo "<div class=\"mini\" >
-          <h4>{$liste_photos[$i]['letitre']}</h4>";
+    <a href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" target="_blank">
     
-    echo "<img  src=\"./images/miniatures/{$liste_photos[$i]['lenom']}.jpg\" alt=\"\" />";
+    <div class="mini">
     
-    echo "<p>{$liste_photos[$i]['ladesc']}</p>";
+        <h4><?php echo $liste_photos[$i]['letitre']; ?></h4>
+       
+        <img  src="./images/miniatures/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" />
     
-    echo "<pre>Par : {$liste_photos[$i]['lelogin']}</pre>";
+        <p><?php echo $liste_photos[$i]['ladesc']; ?></p>
+        
+        <pre>Par : <?php echo $liste_photos[$i]['lelogin']; ?></pre>
+
+    </div></a>
     
-    echo '</div>';
+    <?php
     
-    echo '</a>';
 }
 
 $content = ob_get_clean();
