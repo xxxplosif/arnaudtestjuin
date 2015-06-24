@@ -2,8 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./views/css/style.css" />
     <title><?php echo TITLE ?></title>
+    
+    <link rel="stylesheet" href="./views/css/style.css" />
+    
 </head>
 <body>
     
@@ -15,27 +17,33 @@
             
             <ul class='menu'>
                 <li><a href="./">Accueil</a> |</li>
-                <li><a href="">Catégories <small>&#x25BC;</small></a> |</li>
+                <li><a id="dropdowntrigger" onclick="toggledropdown()">Catégories <small>&#x25BC;</small></a> |</li> <?php // &#x25B2; for normal triangle ?>
                 <li><a href="./?page=contact">Nous contacter</a> |</li>
-                <li><a href="./?page=userconnect">Se connecter à l'espace client</a></li>
+                <li><a href="./?page=userconnect">Espace client</a></li>
             </ul>
-            
-            <hr />
             
                 <?php 
                 
                 // currently building
                 
-                echo '<div class="dropdown"><ul>';
+                echo '<div id="dropdown"><hr />';
                 
-                foreach($liste_categories as $key => $value){
-                    echo "<li><a href=\"\">{$value['lintitule']}</a></li>";
+                for($i=0;$i<count($liste_categories);$i++){
+                    
+                    echo "<a href=\"./?page=categorie&id={$liste_categories[$i]['id']}\">{$liste_categories[$i]['lintitule']}</a>";
+                    
+                    if($i != count($liste_categories) -1 ){
+                        
+                        echo ' | ';
+                        
+                    }
+                    
                 }
                 
-                echo '</ul></div>';
+                echo '</div>';
                 
                 ?>
-
+            
             <hr />
             
         </nav>
@@ -49,6 +57,6 @@
         <?php echo $content; ?>
         
     </section>
-    
+    <script type="text/javascript" src='./views/js/main.js'></script>
 </body>
 </html>

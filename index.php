@@ -2,6 +2,8 @@
 
 //-- front controller --//
 
+session_start();
+
 // core functions
 
 require './core/connect.php';

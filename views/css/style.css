@@ -4,8 +4,8 @@
 .menu *{
     display: inline-block;
 }
-.dropdown ul{
-    padding: 0;
-    margin-left: 60px;
-    list-style-type: none;
+a{
+    color:darkblue;
+    text-decoration: underline;
+    cursor: pointer;
 }
