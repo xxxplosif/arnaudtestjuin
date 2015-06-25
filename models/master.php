@@ -22,6 +22,8 @@ require 'getPhotoCategories.php';
 
 require 'getRubrique.php';
 
+require 'getUser.php';
+
 require 'insertPhoto.php';
 
 require 'updatePhoto.php';
