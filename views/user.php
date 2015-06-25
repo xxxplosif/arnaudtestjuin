@@ -17,9 +17,11 @@ if(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
 
 <?php
 
-else:
+elseif(!isset($action) || $action != 'edit'):
 
 echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en tant que '. $_SESSION['user']['ledroit'] . '.</p><hr />';
+
+if(isset($editerror)) echo $editerror;
 
 ?>
 
@@ -71,16 +73,61 @@ for($i=0;$i<count($liste_photos);$i++){
     <p><?php echo $liste_photos[$i]['ladesc']; ?></p>
 
     <pre>Par : <?php echo $liste_photos[$i]['lelogin']; ?></pre>
-
-    <a href="./?page=user&action=delete&id=<?php echo $liste_photos[$i]['id']; ?>"><img src="./images/common/delete.png"/></a>
+    
+    <a 
+        href="./?page=user&action=delete&id=<?php echo $liste_photos[$i]['id']; ?>"
+        onclick="return parachute('Êtes-vous sûr de vouloir supprimer &quot;<?php echo $liste_photos[$i]['letitre']; ?>&quot; ?')"
+    ><img src="./images/common/delete.png"/></a>
     
     <a href="./?page=user&action=edit&id=<?php echo $liste_photos[$i]['id']; ?>"><img src="./images/common/edit.png"/></a>
+    
+    <?php 
+
+    $categories = explode('|||', getPhotoCategories($i)['lintitule']);
+    
+    if(!empty($categories[0])){
+        
+        echo '<p>Catégories :</p>';
+        
+        foreach ($categories as $value){
+            
+            echo "<pre>- $value</pre>";
+            
+        }
+        
+    }
+    
+    ?>
     
 </div>
 
 <?php
     
 }
+
+elseif($action == 'edit'):
+
+    echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en tant que '. $_SESSION['user']['ledroit'] . '.</p><hr />';
+    
+?>    
+
+
+
+<form action="./?page=user&action=treatedit&id=<?php echo $photo['id']; ?>" method="POST">
+    
+    <label for="letitre">Titre :</label>
+    <input type="text" id="letitre" name="letitre" value="<?php echo $photo['letitre']; ?>" required/><br />
+
+    <label for="ladesc">Description :</label><br />
+    <textarea name="ladesc" id="ladesc" cols="30" rows="10" required><?php echo $photo['ladesc']; ?></textarea><br />
+    
+    <input type="submit" value="Modifier"/>
+    
+</form>
+
+    
+<?php
+
 
 endif;
 

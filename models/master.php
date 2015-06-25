@@ -12,4 +12,10 @@ require 'getListPhoto.php';
 
 require 'getListPhotoByUser.php';
 
+require 'getPhoto.php';
+
+require 'getPhotoCategories.php';
+
 require 'insertPhoto.php';
+
+require 'updatePhoto.php';
