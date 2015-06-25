@@ -24,13 +24,41 @@ else:
     
 endif;    
 
+// pagination
+
+if(getCountRubriquePhoto($id)['nb'] > 0){
+
+    echo '<p>'.pagination(getCountRubriquePhoto($id)['nb'],$pos).'</p>';
+
+}else{
+    
+    echo '<p>Aucune photos dans cette catégorie</p>';
+    
+}
+
+// for loop display photos
+
+for($i=0;$i<count($liste_photos);$i++){
+
 ?>
 
-ma pagination <br /><br />
+ <div class="mini">
 
-affichage des 20 dernières photos de la rubrique
+    <h4><?php echo $liste_photos[$i]['letitre']; ?></h4>
+
+    <a href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" target="_blank">
+        <img  src="./images/miniatures/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" />
+    </a>
+    
+    <p><?php echo $liste_photos[$i]['ladesc']; ?></p>
+
+    <pre>Par : <?php echo $liste_photos[$i]['lelogin']; ?></pre>
+    
+</div>   
 
 <?php
+
+}
 
 $content = ob_get_clean();
 

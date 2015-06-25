@@ -6,9 +6,13 @@ require 'connectUser.php';
 
 require 'getCountPhotoByUser.php';
 
+require 'getCountRubriquePhoto.php';
+
 require 'getListCategory.php';
 
 require 'getListPhoto.php';
+
+require 'getListPhotoByRubrique.php';
 
 require 'getListPhotoByUser.php';
 
