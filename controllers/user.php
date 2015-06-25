@@ -22,8 +22,22 @@ if(isset($_POST['user']) && isset($_POST['password'])){
 
 if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
 
-    $liste_photos = getListPhotoByUser($_SESSION['user']['id'],0);
-      
+    // pagination
+    
+    if(isset($_GET['pos'])){ 
+        
+        $pos = secure($_GET['pos']);
+        
+    }else{
+        
+        $pos = 1;
+        
+    }
+    
+    $from = ($pos -1)*20;
+    
+    $liste_photos = getListPhotoByUser($_SESSION['user']['id'],$from);
+
     
     
 // si on a envoyé le formulaire et qu'un fichier est bien attaché

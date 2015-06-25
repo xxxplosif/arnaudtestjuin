@@ -4,6 +4,8 @@
 
 require 'connectUser.php';
 
+require 'getCountPhotoByUser.php';
+
 require 'getListCategory.php';
 
 require 'getListPhoto.php';

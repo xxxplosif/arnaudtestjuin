@@ -48,15 +48,17 @@ echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en t
 
 <h3>Mes photos</h3>
 
-<p>Ma pagination ici</p>
-
 <?php
+
+// pagination
+
+echo '<p>'.pagination(getCountPhotoByUser($_SESSION['user']['id'])['nb'],$pos).'</p>';
+
+// for loop display photos
 
 for($i=0;$i<count($liste_photos);$i++){
     
 ?>
-
-
 
 <div class="mini">
 

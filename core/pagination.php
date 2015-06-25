@@ -10,20 +10,20 @@
  * )
  */
 
-function pagination($total, $page_actu = 1, $par_pg = 10, $page, $mng, $var_get = "pg") {
+function pagination($total, $page_actu = 1, $par_pg = 20, $var_get = "page=user&pos") {
     $nombre_pg = ceil($total / $par_pg);
     if ($nombre_pg > 1) {
-        $sortie = "Page ".$page_actu." ";
+        $sortie = "Page ";
         for ($i = 1; $i <= $nombre_pg; $i++) {
             if ($i == 1) {
                 if ($i == $page_actu) {
                     $sortie.= "<< < ";
                 } else {
-                    $sortie.= "<a href='?page=$page&mng=$mng&$var_get=$i'><<</a> <a href='?page=$page&mng=$mng&$var_get=" . ($page_actu - 1) . "'><</a> ";
+                    $sortie.= "<a href='?$var_get=$i'><<</a> <a href='?$var_get=" . ($page_actu - 1) . "'><</a> ";
                 }
             }
             if ($i != $page_actu) {
-                $sortie .= "<a href='?page=$page&mng=$mng&$var_get=$i'>$i</a>";
+                $sortie .= "<a href='?$var_get=$i'>$i</a>";
             } else {
                 $sortie .= " $i ";
             }
@@ -33,7 +33,7 @@ function pagination($total, $page_actu = 1, $par_pg = 10, $page, $mng, $var_get 
                 if ($i == $page_actu) {
                     $sortie.=" > >>";
                 } else {
-                    $sortie.= " <a href='?page=$page&mng=$mng&$var_get=" . ($page_actu + 1) . "'>></a> <a href='?page=$page&mng=$mng&&$var_get=$nombre_pg'>>></a> ";
+                    $sortie.= " <a href='?$var_get=" . ($page_actu + 1) . "'>></a> <a href='?$var_get=$nombre_pg'>>></a> ";
                 }
             }
         }
