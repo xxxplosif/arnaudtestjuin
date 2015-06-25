@@ -8,4 +8,6 @@ require 'getListCategory.php';
 
 require 'getListPhoto.php';
 
+require 'getListPhotoByUser.php';
+
 require 'insertPhoto.php';

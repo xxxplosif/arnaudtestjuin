@@ -46,7 +46,39 @@ echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en t
     
 </form>
 
+<h3>Mes photos</h3>
+
+<p>Ma pagination ici</p>
+
 <?php
+
+for($i=0;$i<count($liste_photos);$i++){
+    
+?>
+
+
+
+<div class="mini">
+
+    <h4><?php echo $liste_photos[$i]['letitre']; ?></h4>
+
+    <a href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" target="_blank">
+        <img  src="./images/miniatures/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" />
+    </a>
+    
+    <p><?php echo $liste_photos[$i]['ladesc']; ?></p>
+
+    <pre>Par : <?php echo $liste_photos[$i]['lelogin']; ?></pre>
+
+    <a href="./?page=user&action=delete&id=<?php echo $liste_photos[$i]['id']; ?>"><img src="./images/common/delete.png"/></a>
+    
+    <a href="./?page=user&action=edit&id=<?php echo $liste_photos[$i]['id']; ?>"><img src="./images/common/edit.png"/></a>
+    
+</div>
+
+<?php
+    
+}
 
 endif;
 

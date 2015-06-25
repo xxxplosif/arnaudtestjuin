@@ -20,6 +20,12 @@ if(isset($_POST['user']) && isset($_POST['password'])){
     
 }
 
+if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
+
+    $liste_photos = getListPhotoByUser($_SESSION['user']['id'],0);
+      
+    
+    
 // si on a envoyé le formulaire et qu'un fichier est bien attaché
 if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
     
@@ -70,3 +76,5 @@ if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
         
     }    
 }
+
+endif;
