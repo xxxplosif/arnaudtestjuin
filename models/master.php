@@ -16,6 +16,8 @@ require 'getPhoto.php';
 
 require 'getPhotoCategories.php';
 
+require 'getRubrique.php';
+
 require 'insertPhoto.php';
 
 require 'updatePhoto.php';

@@ -53,8 +53,6 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                             
                             $update_photo = updatePhoto($photo['id'], $letitre, $ladesc);
                             
-                            var_dump($update_photo);
-                            
                             if($update_photo == false){
                                 
                                 $editerror = 'La modification a échoué !';
@@ -71,7 +69,7 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                         
                     }elseif($action == 'treatdelete'){
                         
-                        
+                        // treat delete here
                         
                         
                         
