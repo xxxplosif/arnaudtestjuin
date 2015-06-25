@@ -32,14 +32,30 @@ if(isset($editerror)) echo $editerror;
     <label for="letitre">Titre du fichier</label>
     <input type="text" id="letitre" name="letitre" required/><br /><br />
     
-    <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+    <!--<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>-->
     
     <label for="lefichier">Fichier</label>
     <input type="file" id="lefichier" name="lefichier" required/><br/><br />
     
     <label for="ladesc">Description</label><br/>
-    <textarea id="ladesc" name="ladesc"></textarea><br/><br />
+    <textarea id="ladesc" name="ladesc"></textarea><br/><br/>
     
+    <label>Catégories</label><br/><br/>
+        <?php 
+        
+        echo '<table>';
+        
+        foreach($liste_categories as $value){
+            
+            echo "<tr><td>{$value['lintitule']}</td><td><input type=\"checkbox\" name=\"category[]\" value=\"{$value['id']}\" /></td></tr>";
+            
+        }
+        
+        echo '</table>'
+        
+        ?>
+    
+    <br />
     <input type="submit" value="Envoyer le fichier" />  
     
     <?php if(isset($error_upload_image)) echo '<span style="color:red;">'.$error_upload_image.'</span>'; ?>

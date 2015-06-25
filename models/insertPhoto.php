@@ -11,7 +11,7 @@ function insertPhoto($lenom,$letype,$lepoids,$lahauteur,$lalargeur,$letitre,$lad
     
     if($q){
         
-        return true;
+        return mysqli_insert_id($connect);
         
     }else{
         
