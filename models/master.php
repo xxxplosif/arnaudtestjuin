@@ -2,6 +2,8 @@
 
 // includes all models
 
+require 'bindPhotoCategory.php';
+
 require 'connectUser.php';
 
 require 'getCountPhotoByUser.php';

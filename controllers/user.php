@@ -147,21 +147,45 @@ if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
             
             // exécution de la requête (on utilise un tableau venant de la fonction upload_originales, de champs de formulaires POST traités et d'une variable de session comme valeurs d'entrée)
             
-            // v. in models
+            $id_newimage =  insertPhoto($upload['nom'],
+                            $upload['extension'],
+                            $upload['poids'],
+                            $upload['hauteur'],
+                            $upload['largeur'],
+                            $letitre,
+                            $ladesc,
+                            $_SESSION['user']['id']);
+
+            if($id_newimage != false){
+                
+                if(isset($_POST['category']) && is_array($_POST['category'])){
+                    
+                    $category = $_POST['category'];
+                    
+                }else{
+                    
+                    $category = [];
+                    
+                }
+                
+                foreach ($category as $value){
+                    
+                bindPhotoCategory($id_newimage,$value);
+                    
+                }
             
-            insertPhoto($upload['nom'],
-                        $upload['extension'],
-                        $upload['poids'],
-                        $upload['hauteur'],
-                        $upload['largeur'],
-                        $letitre,
-                        $ladesc,
-                        $_SESSION['user']['id']);
-            
-            $msg_image_uploaded = 'L\'image a bien été envoyée !';
+                $msg_image_uploaded = 'L\'image a bien été envoyée !';
+                
+            }else{
+                
+                $error_upload_image = 'Erreur lors de l\'envoi de fichier';
+                
+            }
             
         }else{
+            
             $error_upload_image = 'Erreur lors de l\'envoi de fichier';
+            
         }
         
     }    

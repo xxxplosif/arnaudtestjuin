@@ -8,14 +8,14 @@ function getPhotoCategories($id_photo){
             FROM photo p
             
             LEFT JOIN photo_has_rubrique h ON h.photo_id = p.id
-            LEFT JOIN rubrique r ON h.rubrique_id = r.id
+            INNER JOIN rubrique r ON h.rubrique_id = r.id
             
             WHERE p.utilisateur_id = ".$_SESSION['user']['id']." 
                 AND p.id = $id_photo
             
             GROUP BY p.id
             ORDER BY p.id DESC;  ";
-
+    
     $q = mysqli_query($connect, $q);
     
     if($q){

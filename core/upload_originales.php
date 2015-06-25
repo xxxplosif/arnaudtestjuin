@@ -29,7 +29,7 @@ function upload_originales($fichier,$destination,$ext){
     if($extension_origine==="jpeg"){ $extension_origine = "jpg"; }
     
     // création du nom final  (appel de la fonction chaine_hasard, pour la chaine de caractère aléatoire)
-    $nom_final = chaine_hasard(25);
+    $nom_final = date('YmdHis').chaine_hasard(36);
     
     // on a besoin du nom final dans le tableau $sortie si la fonction réussit
     $sortie['poids'] = filesize($fichier['tmp_name']);
@@ -44,6 +44,7 @@ function upload_originales($fichier,$destination,$ext){
         return $sortie;
     // si erreur
     }else{
+        
         return "Erreur lors de l'upload d'image";
     }
     
