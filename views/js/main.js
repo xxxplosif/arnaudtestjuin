@@ -28,4 +28,10 @@ function toggledropdown(){
 
 }
 
+// Parachute
 
+function parachute(message){
+    
+    if(!confirm(message)) return false;
+    
+}

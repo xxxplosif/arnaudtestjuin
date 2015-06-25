@@ -1,27 +1,19 @@
 <?php
 
-function getListPhoto(){
+function getCountPhotoByUser($id_user){
     
     global $connect; if(!isset($connect)) { $connect = connect(DB_SERVER, DB_USER, DB_MDP, DB_NAME); }
     
-    $q = 'SELECT p.*, u.lelogin AS lelogin FROM photo p
+    $q = "SELECT COUNT(*) AS nb FROM photo p
           INNER JOIN utilisateur u ON p.utilisateur_id = u.id
-          LIMIT 20';
+          WHERE u.id = $id_user";
     
     $q = mysqli_query($connect, $q);
     
     if($q){
         
-        $array = [];
-        
-        while ($row = mysqli_fetch_assoc($q)){
+        return mysqli_fetch_assoc($q);
             
-            $array[] = $row;
-            
-        }
-        
-        return $array;
-        
     }else{
         
         return false;
