@@ -20,7 +20,7 @@ if(isset($_POST['titre']) && isset($_POST['nom']) && isset($_POST['email']) && i
     }
     
     if(!empty($titre) && !empty($nom) && !empty($email) && !empty($message)){
-
+        
         $destinataire = getUser(1)['lemail'];
 
         $send_message =  "Titre : "                         .$titre.     "\r\n";
@@ -33,14 +33,11 @@ if(isset($_POST['titre']) && isset($_POST['nom']) && isset($_POST['email']) && i
         $send_message .= "Adresse email de l'expéditeur : " .$email.     "\r\n";
         $send_message .= "Message : "                       .$message.   "\r\n";
 
-        utf8_encode($send_message);
-        
         $demande = 'demande';
         
-        $entete = 'From: '.$email."\r\n".
-        'Reply-To: '.$email."\r\n".
-        'X-Mailer: PHP/'.phpversion();
-        
+        $entete = "From: ".$email."\r\n".
+        "Reply-To: ".$email."\r\n".
+        "X-Mailer: PHP/".phpversion();
         
         if (mail($destinataire,$demande,$send_message,$entete)){     
             

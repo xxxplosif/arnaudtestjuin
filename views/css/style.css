@@ -24,3 +24,6 @@ a{
 .mini p{
     word-wrap: break-word;
 }
+.contact td{
+    vertical-align: top;
+}

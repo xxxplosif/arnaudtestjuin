@@ -26,31 +26,48 @@ endif;
 
 ?>
 
-<form action="./?page=contact" method="POST">
+<h3>Nous contacter</h3>
+
+<form action="./?page=contact" method="POST" class="contact">
     
+    <table>
     
-    <label for="titre">Titre : </label>
-    <input type="text" id="titre" name="titre" required /><br />
+        <tr>
+            <td><label for="titre">Titre</label></td>
+            <td><input type="text" id="titre" name="titre" required /></td>
+        </tr>
+
+        <tr>
+            <td><label for="nom">Nom</label></td>
+            <td><input type="text" id="nom" name="nom" required=""/></td>
+        </tr>
     
-    <label for="nom">Nom : </label>
-    <input type="text" id="nom" name="nom" required=""/><br />
+        <tr>
+            <td><label for="prenom">Prénom</label></td>
+            <td><input type="text" id="prenom" name="prenom"/></td>
+        </tr>
     
-    <label for="prenom">Prénom : </label>
-    <input type="text" id="prenom" name="prenom"/><br />
+        <tr>
+            <td><label for="email">E-mail</label></td>
+            <td><input type="email" id="email" name="email" required /></td>
+        </tr>
+        
+        <tr>
+            <td><label for="message">Message</label></td>
+            <td><textarea maxlength="500" name="message" id="message" cols="30" rows="10" required></textarea></td>
+        </tr>
     
-    <label for="email">E-mail : </label>
-    <input type="email" id="email" name="email" required /><br />
+        <tr>
+            <td><input type="submit" value="Envoyer" name="submitmessage" /></td>
+            <td>
+                <?php if(isset($msg)) echo '<span style="color:darkblue;">'.$msg.'</span>'; ?>
+                <?php if(isset($error)) echo '<span style="color:red;">'.$error.'</span>'; ?>
+            </td>
+        </tr>
     
-    <label for="message">Message : </label>
-    <textarea maxlength="500" name="message" id="message" cols="30" rows="10" required></textarea><br />
-    
-    <input type="submit" value="Envoyer" name="submitmessage" />
-    
-    <?php if(isset($msg)) echo '<span style="color:darkblue;">'.$msg.'</span>'; ?>
-    <?php if(isset($error)) echo '<span style="color:red;">'.$error.'</span>'; ?>
+    </table>
     
 </form>
-
 
 <?php
 
