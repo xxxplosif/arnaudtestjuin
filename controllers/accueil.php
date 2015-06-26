@@ -2,4 +2,4 @@
 
 $liste_categories = getListCategory();
 
-$liste_photos = getListPhoto();
+$liste_photos = getListPhotoLimit();

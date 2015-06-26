@@ -11,7 +11,7 @@ define('DB_NAME', 'arnaudtestjuin');
 
 // constante contenante la racine du site
 
-define('CHEMIN_RACINE', 'http://localhost/arnaudtestjuin/');
+define('CHEMIN_RACINE', 'D:/arnaudtestjuin/');
 
 // nom des dossiers de destination des images
 

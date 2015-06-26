@@ -36,7 +36,7 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                 
                 $action = secure($_GET['action']);
                 
-                $autorized_actions = array('edit','delete','treatedit','treatdelete');
+                $autorized_actions = array('edit','delete','treatedit');
             
                 if(in_array($action, $autorized_actions)){
                     
@@ -50,6 +50,24 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                             
                             $letitre = secure($_POST['letitre']);
                             $ladesc  = secure($_POST['ladesc']);
+                            
+                            unbindPhotoCategory($photo['id']);
+                            
+                            if(isset($_POST['category']) && is_array($_POST['category'])){
+                    
+                                $category = $_POST['category'];
+
+                            }else{
+
+                                $category = [];
+
+                            }
+
+                            foreach ($category as $value){
+
+                                bindPhotoCategory($photo['id'],$value);
+
+                            }
                             
                             $update_photo = updatePhoto($photo['id'], $letitre, $ladesc);
                             
@@ -67,13 +85,17 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                             
                         }
                         
-                    }elseif($action == 'treatdelete'){
+                    }elseif($action == 'delete'){
+                         
+                        unbindPhotoCategory($photo['id']);
                         
-                        // treat delete here
+                        deletePhoto($photo['id']);
+                         
+                        unlink(CHEMIN_RACINE.$dossier_ori.$photo['lenom'].'.'.$photo['lextension']);
                         
+                        unlink(CHEMIN_RACINE.$dossier_gd.$photo['lenom'].'.jpg');
                         
-                        
-                        // errors ? stack in a variable and show them
+                        unlink(CHEMIN_RACINE.$dossier_mini.$photo['lenom'].'.jpg');
                         
                     }
                     
@@ -98,23 +120,7 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
         
     }
     
-    // pagination
-    
-    if(isset($_GET['pos'])){ 
-        
-        $pos = secure($_GET['pos']);
-        
-    }else{
-        
-        $pos = 1;
-        
-    }
-    
-    $from = ($pos -1)*20;
-    
-    $liste_photos = getListPhotoByUser($_SESSION['user']['id'],$from);
-    
-    // photo upload
+// photo upload
     
 // si on a envoyé le formulaire et qu'un fichier est bien attaché
 if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
@@ -190,5 +196,21 @@ if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
         
     }    
 }
+
+// pagination
+    
+    if(isset($_GET['pos'])){ 
+        
+        $pos = secure($_GET['pos']);
+        
+    }else{
+        
+        $pos = 1;
+        
+    }
+    
+    $from = ($pos -1)*20;
+    
+    $liste_photos = getListPhotoByUser($_SESSION['user']['id'],$from);
 
 endif;
