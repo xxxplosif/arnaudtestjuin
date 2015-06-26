@@ -98,23 +98,7 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
         
     }
     
-    // pagination
-    
-    if(isset($_GET['pos'])){ 
-        
-        $pos = secure($_GET['pos']);
-        
-    }else{
-        
-        $pos = 1;
-        
-    }
-    
-    $from = ($pos -1)*20;
-    
-    $liste_photos = getListPhotoByUser($_SESSION['user']['id'],$from);
-    
-    // photo upload
+// photo upload
     
 // si on a envoyé le formulaire et qu'un fichier est bien attaché
 if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
@@ -190,5 +174,21 @@ if(isset($_POST['letitre'])&&isset($_FILES['lefichier'])){
         
     }    
 }
+
+// pagination
+    
+    if(isset($_GET['pos'])){ 
+        
+        $pos = secure($_GET['pos']);
+        
+    }else{
+        
+        $pos = 1;
+        
+    }
+    
+    $from = ($pos -1)*20;
+    
+    $liste_photos = getListPhotoByUser($_SESSION['user']['id'],$from);
 
 endif;

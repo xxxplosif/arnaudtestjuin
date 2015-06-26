@@ -32,8 +32,6 @@ if(isset($editerror)) echo $editerror;
     <label for="letitre">Titre du fichier</label>
     <input type="text" id="letitre" name="letitre" required/><br /><br />
     
-    <!--<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>-->
-    
     <label for="lefichier">Fichier</label>
     <input type="file" id="lefichier" name="lefichier" required/><br/><br />
     
@@ -98,8 +96,8 @@ for($i=0;$i<count($liste_photos);$i++){
     <a href="./?page=user&action=edit&id=<?php echo $liste_photos[$i]['id']; ?>"><img src="./images/common/edit.png"/></a>
     
     <?php 
-
-    $categories = explode('|||', getPhotoCategories($i)['lintitule']);
+    
+    $categories = explode('|||', getPhotoCategories($liste_photos[$i]['id'])['lintitule']);
     
     if(!empty($categories[0])){
         

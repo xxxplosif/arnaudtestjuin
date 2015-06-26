@@ -6,6 +6,7 @@ function getListPhoto(){
     
     $q = 'SELECT p.*, u.lelogin AS lelogin FROM photo p
           INNER JOIN utilisateur u ON p.utilisateur_id = u.id
+          ORDER BY p.id DESC
           LIMIT 20';
     
     $q = mysqli_query($connect, $q);
