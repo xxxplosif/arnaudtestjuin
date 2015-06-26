@@ -10,6 +10,7 @@ a{
     cursor: pointer;
 }
 .mini{
+    width: 150px;
     display: inline-block;
     vertical-align: top;
     margin: 5px;
@@ -18,4 +19,8 @@ a{
 }
 .mini h4{
     text-align: center;
+    word-wrap: break-word;
+}
+.mini p{
+    word-wrap: break-word;
 }

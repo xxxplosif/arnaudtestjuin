@@ -21,9 +21,6 @@ elseif(!isset($action) || $action != 'edit'):
 
 echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en tant que '. $_SESSION['user']['ledroit'] . '.</p><hr />';
 
-// refactor here
-if(isset($editerror)) echo $editerror;
-
 ?>
 
 <h3>Charger une nouvelle image</h3>
@@ -170,6 +167,8 @@ elseif($action == 'edit'):
     
     <input type="submit" value="Modifier"/>
     
+    <?php if(isset($editerror)) echo '<span style="color:red;">'.$editerror.'</span>'; ?>
+    
 </form>
 
     
@@ -177,6 +176,8 @@ elseif($action == 'edit'):
 
 
 endif;
+
+
 
 $content = ob_get_clean();
 

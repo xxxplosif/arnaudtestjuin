@@ -36,7 +36,7 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                 
                 $action = secure($_GET['action']);
                 
-                $autorized_actions = array('edit','delete','treatedit','treatdelete');
+                $autorized_actions = array('edit','delete','treatedit');
             
                 if(in_array($action, $autorized_actions)){
                     
@@ -85,13 +85,17 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                             
                         }
                         
-                    }elseif($action == 'treatdelete'){
+                    }elseif($action == 'delete'){
+                         
+                        unbindPhotoCategory($photo['id']);
                         
-                        // treat delete here
+                        deletePhoto($photo['id']);
+                         
+                        unlink(CHEMIN_RACINE.$dossier_ori.$photo['lenom'].'.'.$photo['lextension']);
                         
+                        unlink(CHEMIN_RACINE.$dossier_gd.$photo['lenom'].'.jpg');
                         
-                        
-                        // errors ? stack in a variable and show them
+                        unlink(CHEMIN_RACINE.$dossier_mini.$photo['lenom'].'.jpg');
                         
                     }
                     

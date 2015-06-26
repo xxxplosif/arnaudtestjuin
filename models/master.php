@@ -6,6 +6,8 @@ require 'bindPhotoCategory.php';
 
 require 'connectUser.php';
 
+require 'deletePhoto.php';
+
 require 'getCountPhotoByUser.php';
 
 require 'getCountRubriquePhoto.php';
