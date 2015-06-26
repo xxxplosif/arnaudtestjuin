@@ -51,6 +51,24 @@ if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
                             $letitre = secure($_POST['letitre']);
                             $ladesc  = secure($_POST['ladesc']);
                             
+                            unbindPhotoCategory($photo['id']);
+                            
+                            if(isset($_POST['category']) && is_array($_POST['category'])){
+                    
+                                $category = $_POST['category'];
+
+                            }else{
+
+                                $category = [];
+
+                            }
+
+                            foreach ($category as $value){
+
+                                bindPhotoCategory($photo['id'],$value);
+
+                            }
+                            
                             $update_photo = updatePhoto($photo['id'], $letitre, $ladesc);
                             
                             if($update_photo == false){

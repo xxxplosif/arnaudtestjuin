@@ -28,4 +28,6 @@ require 'getUser.php';
 
 require 'insertPhoto.php';
 
+require 'unbindPhotoCategory.php';
+
 require 'updatePhoto.php';

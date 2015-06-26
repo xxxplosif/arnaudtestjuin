@@ -21,6 +21,7 @@ elseif(!isset($action) || $action != 'edit'):
 
 echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en tant que '. $_SESSION['user']['ledroit'] . '.</p><hr />';
 
+// refactor here
 if(isset($editerror)) echo $editerror;
 
 ?>
@@ -45,7 +46,7 @@ if(isset($editerror)) echo $editerror;
         
         foreach($liste_categories as $value){
             
-            echo "<tr><td>{$value['lintitule']}</td><td><input type=\"checkbox\" name=\"category[]\" value=\"{$value['id']}\" /></td></tr>";
+            echo "<tr><td>{$value['lintitule']}</td><td><input type=\"checkbox\" name=\"category[{$value['id']}]\" value=\"{$value['id']}\" /></td></tr>";
             
         }
         
@@ -129,11 +130,43 @@ elseif($action == 'edit'):
 
 <form action="./?page=user&action=treatedit&id=<?php echo $photo['id']; ?>" method="POST">
     
-    <label for="letitre">Titre :</label>
-    <input type="text" id="letitre" name="letitre" value="<?php echo $photo['letitre']; ?>" required/><br />
+    <label for="letitre">Titre</label><br />
+    <input type="text" id="letitre" name="letitre" value="<?php echo $photo['letitre']; ?>" required/><br /><br />
 
-    <label for="ladesc">Description :</label><br />
-    <textarea name="ladesc" id="ladesc" cols="30" rows="10" required><?php echo $photo['ladesc']; ?></textarea><br />
+    <label for="ladesc">Description</label><br />
+    <textarea name="ladesc" id="ladesc" cols="30" rows="10" required><?php echo $photo['ladesc']; ?></textarea><br /><br />
+    
+    <label>Catégories</label><br /><br />
+    
+    <?php 
+
+    $category = explode('|||', getPhotoCategories($photo['id'])['lintitule']);
+
+    echo '<table>';
+    
+    foreach($liste_categories as $value1){
+        
+        echo   "<tr><td>{$value1['lintitule']}</td><td><input type=\"checkbox\" name=\"category[{$value1['id']}]\" value=\"{$value1['id']}\"";
+        
+        foreach ($category as $value2) {
+            
+            if($value1['lintitule'] == $value2){
+                
+                echo 'checked';
+                
+            }
+            
+        }
+        
+        echo "/></td></tr>";
+
+    }
+    
+    echo '</table><br />';
+
+    
+    ?>
+    
     
     <input type="submit" value="Modifier"/>
     
