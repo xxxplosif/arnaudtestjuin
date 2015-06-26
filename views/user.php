@@ -66,7 +66,7 @@ echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en t
 
 // pagination
 
-echo '<p>'.pagination(getCountPhotoByUser($_SESSION['user']['id'])['nb'],$pos).'</p>';
+echo '<p>'.pagination(getCountPhotoByUser($_SESSION['user']['id'])['nb'],$pos,20,'page=user&pos').'</p>';
 
 // for loop display photos
 

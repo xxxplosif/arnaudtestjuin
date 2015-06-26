@@ -1,13 +1,13 @@
 <?php
 
-function getListPhoto($from){
+function getListPhotoLimit(){
     
     global $connect; if(!isset($connect)) { $connect = connect(DB_SERVER, DB_USER, DB_MDP, DB_NAME); }
     
-    $q = "SELECT p.*, u.lelogin AS lelogin FROM photo p
+    $q = 'SELECT p.*, u.lelogin AS lelogin FROM photo p
           INNER JOIN utilisateur u ON p.utilisateur_id = u.id
           ORDER BY p.id DESC
-          LIMIT $from, 20";
+          LIMIT 20';
     
     $q = mysqli_query($connect, $q);
     

@@ -8,11 +8,15 @@ require 'connectUser.php';
 
 require 'deletePhoto.php';
 
+require 'getCountPhoto.php';
+
 require 'getCountPhotoByUser.php';
 
 require 'getCountRubriquePhoto.php';
 
 require 'getListCategory.php';
+
+require 'getListPhotoLimit.php';
 
 require 'getListPhoto.php';
 
@@ -23,6 +27,8 @@ require 'getListPhotoByUser.php';
 require 'getPhoto.php';
 
 require 'getPhotoCategories.php';
+
+require 'getPhotoCategoriesAllUser.php';
 
 require 'getRubrique.php';
 
