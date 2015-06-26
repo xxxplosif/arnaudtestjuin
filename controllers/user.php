@@ -20,28 +20,91 @@ if(isset($_POST['user']) && isset($_POST['password'])){
     
 }
 
-/* bonus inscription && oubli
 
 if(isset($_GET['action'])){
     
     $action = secure($_GET['action']);
     
-    $autorized_actions = array('inscription','oubli');
+    $autorized_actions = array('inscription','oubli','submitinscription');
     
     if(in_array($action, $autorized_actions)){
         
-        // treat actions
         
-        
-        
-        
-        // inscription
-        
-        
-        
-        
-        // oubli
-        
+        if(isset($_POST['submitinscription'])){
+            
+            if(isset($_POST['nom']) &&  isset($_POST['login']) && isset($_POST['pass1']) && isset($_POST['pass2']) && isset($_POST['email'])) {
+                   
+                   $nom = secure($_POST['nom']);
+                   $login = secure($_POST['login']);
+                   $pass1 = secure($_POST['pass1']);
+                   $pass2 = secure($_POST['pass2']);
+                   $email = secure($_POST['email']);
+                   
+                   if($pass1 == $pass2){
+                       
+                       if(setNewUser($nom,$login,$email,$pass1,3)){
+                           
+                           $iscriptionok = 'Félicitation, vous pouvez dès à présent vous connecter sur votre espace client !';
+                           
+                       }else{
+                           
+                           $iscriptionerror =  'Veuillez saisir le même mot de passe deux fois !';
+                           
+                       }
+                       
+                   }else{
+                       
+                       $iscriptionerror = 'Veuillez saisir le même mot de passe deux fois !';
+                       
+                   }
+                   
+             
+            }else{
+                
+                $iscriptionerror = 'Veuillez remplir tous les champs !';
+                
+            }
+            
+        }    
+            
+        if(isset($_POST['submitoubli'])){
+            
+            if(isset($_POST['email'])) {
+                
+                $email = secure($_POST['email']);
+                
+                $utilisateur = getUserByMail($email);
+                
+                if($utilisateur != false){
+                    
+                    $entete = "From: webmaster@telepro.fr \r\n".
+                              "Reply-To: webmaster@telepro.fr \r\n".
+                              "X-Mailer: PHP/".phpversion();
+                    
+                    if(mail($email, 'Mot de passe telepro photos',$utilisateur['lepass'],$entete)){
+                        
+                        $oubliok = 'Un email vous a été envoyé avec votre mot de passe';
+                        
+                    }else{
+                        
+                        $oublierror = 'Échec de l\'envoi de l\'email';
+                        
+                    }
+                    
+                }else{
+                    
+                    $oublierror = 'Mauvaise adresse email ou bien vous n\'avez pas de compte chez nous';
+                    
+                }
+                
+                
+            }else{
+                
+                $oublierror = 'Veuillez rentrer une adresse e-mail !';
+                
+            }
+            
+        }
         
     }else{
         
@@ -50,7 +113,8 @@ if(isset($_GET['action'])){
     }
     
 }
- */
+
+
 
 if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
 

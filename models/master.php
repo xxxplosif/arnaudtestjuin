@@ -34,9 +34,13 @@ require 'getRubrique.php';
 
 require 'getUser.php';
 
+require 'getUserByMail.php';
+
 require 'insertPhoto.php';
 
 require 'search.php';
+
+require 'setNewUser.php';
 
 require 'unbindPhotoCategory.php';
 
