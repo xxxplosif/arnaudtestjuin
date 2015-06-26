@@ -20,6 +20,38 @@ if(isset($_POST['user']) && isset($_POST['password'])){
     
 }
 
+/* bonus inscription && oubli
+
+if(isset($_GET['action'])){
+    
+    $action = secure($_GET['action']);
+    
+    $autorized_actions = array('inscription','oubli');
+    
+    if(in_array($action, $autorized_actions)){
+        
+        // treat actions
+        
+        
+        
+        
+        // inscription
+        
+        
+        
+        
+        // oubli
+        
+        
+    }else{
+        
+        header('Location: ./?page=deconnect');
+        
+    }
+    
+}
+ */
+
 if(isset($_SESSION['user']) && $_SESSION['sid'] == session_id()):
 
     if(isset($_GET['id']) && ctype_digit($_GET['id'])){

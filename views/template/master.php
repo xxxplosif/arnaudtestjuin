@@ -57,6 +57,13 @@
                 
                 ?>
                 
+                | <li>
+                    <form action="./?page=cherche" method="POST">
+                        Rechercher les images <input type="text" name="q" />
+                        <input type="submit" value="chercher" />
+                    </form>
+                </li>
+                
             </ul>
             
                 <?php 

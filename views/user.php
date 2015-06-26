@@ -6,6 +6,10 @@ if(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
 
 ?>
 
+<p>Connexion à l'espace client</p>
+<hr />
+<br />
+
 <form action="" method="POST">
     <label for="user">Utilisateur : </label>
     <input type="text" id="user" name="user" />
@@ -14,6 +18,7 @@ if(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
     <input type="submit" value="Se connecter" />
     <?php if(isset($error_form_connection)) echo '<span style="color:red;">'.$error_form_connection.'</span>'; ?>
 </form>
+<br />
 
 <?php
 

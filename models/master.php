@@ -36,6 +36,8 @@ require 'getUser.php';
 
 require 'insertPhoto.php';
 
+require 'search.php';
+
 require 'unbindPhotoCategory.php';
 
 require 'updatePhoto.php';
