@@ -35,8 +35,8 @@ if(isset($_POST['titre']) && isset($_POST['nom']) && isset($_POST['email']) && i
 
         $demande = 'demande';
         
-        $entete = "From: ".$email."\r\n".
-        "Reply-To: ".$email."\r\n".
+        $entete = "From: ".$email." \r\n".
+        "Reply-To: ".$email." \r\n".
         "X-Mailer: PHP/".phpversion();
         
         if (mail($destinataire,$demande,$send_message,$entete)){     
@@ -48,7 +48,6 @@ if(isset($_POST['titre']) && isset($_POST['nom']) && isset($_POST['email']) && i
             $error = "Erreur à l'envoi !";
 
         }
-        
         
     }else{
         

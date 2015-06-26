@@ -2,9 +2,95 @@
 
 ob_start();
 
-if(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
+if(isset($action) && $action == 'inscription'):
 
 ?>
+
+<p>S'inscrire</p>
+<hr />
+
+<form action="./?page=user&action=inscription" method="POST">
+    
+    <table>
+    
+        <tr>
+            <td><label for="nom">Nom</label></td>
+            <td><input type="text" id="nom" name="nom" required/></td>
+        </tr>
+        
+        <tr>
+            <td><label for="login">Login</label></td>
+            <td><input type="text" id="login" name="login" required/></td>
+        </tr>
+    
+        <tr>
+            <td><label for="email">E-mail</label></td>
+            <td><input type="email" id="email" name="email" required/></td>
+        </tr>
+        
+        <tr>
+            <td><label for="pass1">Mot de passe</label></td>
+            <td><input type="password" id="pass1" name="pass1" required/></td>
+        </tr>
+    
+        <tr>
+            <td>Retapez mot de passe</td>
+            <td><input type="password" id="pass2" name="pass2" required/></td>
+        </tr>
+    
+        <tr>
+            <td><input type="submit" name="submitinscription" value="Inscription"/></td>
+            <td>
+                <?php if(isset($iscriptionerror)) echo '<span style="color:red;">'.$iscriptionerror.'</span>'; ?>
+                <?php if(isset($iscriptionok)) echo '<span style="color:darkblue;">'.$iscriptionok.'</span>'; ?>
+            </td>
+        </tr>
+        
+    
+    
+    </table>
+    
+</form>
+
+<?php
+    
+elseif(isset($action) && $action == 'oubli'):
+
+?>
+
+<p>Mot de passe oublié</p>
+<hr />
+
+<p>Veuillez renseigner ci-dessous l'<b>adresse e-mail</b> renseignée lors de l'inscription</p>
+
+<form action="./?page=user&action=oubli" method="POST">
+    
+    
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required/>
+            
+            <input type="submit" name="submitoubli" value="OK"/>
+
+            <?php if(isset($oublierror)) echo '<span style="color:red;">'.$oublierror.'</span>'; ?>
+            <?php if(isset($oubliok)) echo '<span style="color:darkblue;">'.$oubliok.'</span>'; ?>
+
+        </tr>
+        
+    
+    
+    </table>
+    
+</form>
+
+<?php
+    
+elseif(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
+
+?>
+
+<p>Connexion à l'espace client</p>
+<hr />
+<br />
 
 <form action="" method="POST">
     <label for="user">Utilisateur : </label>
@@ -14,6 +100,14 @@ if(!isset($_SESSION['user']) || $_SESSION['sid'] != session_id()):
     <input type="submit" value="Se connecter" />
     <?php if(isset($error_form_connection)) echo '<span style="color:red;">'.$error_form_connection.'</span>'; ?>
 </form>
+<br />
+
+<a href="./?page=user&action=inscription">S'inscrire</a>
+<br />
+
+<br />
+<a href="./?page=user&action=oubli">Mot de passe oublié</a>
+
 
 <?php
 
@@ -78,7 +172,7 @@ for($i=0;$i<count($liste_photos);$i++){
 
     <h4><?php echo $liste_photos[$i]['letitre']; ?></h4>
 
-    <a href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" target="_blank">
+    <a rel="prettyPhoto[gallery]" href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg">
         <img  src="./images/miniatures/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" />
     </a>
     

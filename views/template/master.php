@@ -2,7 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    
     <title><?php echo TITLE ?></title>
+    
+    <script type="text/javascript" src="./views/js/jquery.js"></script>
+    
+    <script type="text/javascript" src="./views/js/jquery.prettyPhoto.js"></script>
+    
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+          $("a[rel^='prettyPhoto']").prettyPhoto();
+        });
+    </script>
+    
+    <link rel="stylesheet" href="./views/css/prettyPhoto.css" />
     
     <link rel="stylesheet" href="./views/css/style.css" />
     
@@ -57,6 +70,13 @@
                 
                 ?>
                 
+                | <li>
+                    <form action="./?page=cherche" method="POST">
+                        Rechercher les images <input type="text" name="q" />
+                        <input type="submit" value="chercher" />
+                    </form>
+                </li>
+                
             </ul>
             
                 <?php 
@@ -92,6 +112,8 @@
         <?php echo $content; ?>
         
     </section>
+    
     <script type="text/javascript" src='./views/js/main.js'></script>
+    
 </body>
 </html>
