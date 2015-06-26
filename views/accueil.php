@@ -16,8 +16,6 @@ else:
 
     echo '<p>Bienvenue ' . $_SESSION['user']['lenom'] . '. Vous êtes connecté en tant que '. $_SESSION['user']['ledroit'] . '.</p><hr />';
 
-
-
 endif;
 
 for($i=0;$i<count($liste_photos);$i++){
@@ -28,7 +26,7 @@ for($i=0;$i<count($liste_photos);$i++){
     
         <h4><?php echo $liste_photos[$i]['letitre']; ?></h4>
         
-        <a rel="prettyPhoto[accueil]" href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg">
+        <a rel="prettyPhoto[gallery]" href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg">
             <img  src="./images/miniatures/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" />
         </a>
         

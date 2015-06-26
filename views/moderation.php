@@ -24,7 +24,7 @@ for($i=0;$i<count($liste_photos);$i++){
 
     <h4><?php echo $liste_photos[$i]['letitre']; ?></h4>
 
-    <a href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" target="_blank">
+    <a rel="prettyPhoto[gallery]" href="./images/affichees/<?php echo $liste_photos[$i]['lenom']; ?>.jpg">
         <img  src="./images/miniatures/<?php echo $liste_photos[$i]['lenom']; ?>.jpg" />
     </a>
     
